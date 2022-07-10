@@ -2,7 +2,7 @@ const express = require('express');
 const logger = require('morgan');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const apiRouter = require('./routes');
+const routers = require('./app');
 
 dotenv.config();
 const app = express();
@@ -16,7 +16,7 @@ app.use(
     credentials: true,
   }),
 );
-app.use('/api', apiRouter);
+app.use('/', routers);
 
 app.use((req, res, next) => {
   const error = new Error(`${req.method} ${req.url} not found`);

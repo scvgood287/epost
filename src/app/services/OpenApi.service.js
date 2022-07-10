@@ -32,3 +32,9 @@ const applyEms = async () => {
 const cryptoTest = () => {
   CryptoJS.test();
 };
+
+module.exports = {
+  getSpreadsheet,
+  applyEms,
+  cryptoTest,
+};
