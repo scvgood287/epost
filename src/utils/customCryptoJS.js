@@ -2901,33 +2901,35 @@ function hex_to_byte(hex_str) {
   return parseInt(hex_str, 16);
 }
 ////
-var plainText = '안녕하세요';
-var plainValue = CryptoJS.enc.Utf8.parse(plainText); // 평문
-var keyText = 'llnoteTest!@#123'; //KISA_SEED_ECB.java에서 key값은 16byte 고정
-var keyHex = string_to_utf8_hex_string(keyText);
-var key = CryptoJS.enc.Hex.parse(keyHex); //!PbutouchTest!@#
+// var plainText = '안녕하세요';
+// var plainValue = CryptoJS.enc.Utf8.parse(plainText); // 평문
+// var keyText = 'llnoteTest!@#123'; //KISA_SEED_ECB.java에서 key값은 16byte 고정
+// var keyHex = string_to_utf8_hex_string(keyText);
+// var key = CryptoJS.enc.Hex.parse(keyHex); //!PbutouchTest!@#
 
-var encrypted = CryptoJS.SEED.encrypt(plainValue, key, { mode: CryptoJS.mode.ECB, padding: CryptoJS.pad.ZeroPadding });
-var decrypted = CryptoJS.SEED.decrypt(encrypted, key, { mode: CryptoJS.mode.ECB, padding: CryptoJS.pad.ZeroPadding });
-var words = CryptoJS.enc.Base64.parse(encrypted.toString());
-console.log('--------------암호화-------------');
-console.log('공통키 : ' + keyText);
-console.log('공통키(hex) : ' + keyHex);
-console.log('평문 : ' + plainText);
-console.log('--------------------------------');
-console.log('암호화(base64) : ' + encrypted.toString());
-console.log('암호화(hex) : ' + words.toString());
-console.log('복호화(utf8) : ' + CryptoJS.enc.Utf8.stringify(decrypted));
-console.log('복호화(hex) : ' + decrypted.toString());
+// var encrypted = CryptoJS.SEED.encrypt(plainValue, key, { mode: CryptoJS.mode.ECB, padding: CryptoJS.pad.ZeroPadding });
+// var decrypted = CryptoJS.SEED.decrypt(encrypted, key, { mode: CryptoJS.mode.ECB, padding: CryptoJS.pad.ZeroPadding });
+// var words = CryptoJS.enc.Base64.parse(encrypted.toString());
+// console.log('--------------암호화-------------');
+// console.log('공통키 : ' + keyText);
+// console.log('공통키(hex) : ' + keyHex);
+// console.log('평문 : ' + plainText);
+// console.log('--------------------------------');
+// console.log('암호화(base64) : ' + encrypted.toString());
+// console.log('암호화(hex) : ' + words.toString());
+// console.log('복호화(utf8) : ' + CryptoJS.enc.Utf8.stringify(decrypted));
+// console.log('복호화(hex) : ' + decrypted.toString());
 
-console.log('--------------복호화------------');
-console.log('공통키 : ' + keyText);
-var cipherText = 'B3OpWsFgdV3GTWjiWBSmVQ==';
-console.log('암호값 : ' + cipherText);
-console.log('--------------------------------');
-var decrypted = CryptoJS.SEED.decrypt(cipherText, key, { mode: CryptoJS.mode.ECB, padding: CryptoJS.pad.ZeroPadding });
-console.log('복호화(utf8) : ' + CryptoJS.enc.Utf8.stringify(decrypted));
-console.log('복호화(hex) : ' + decrypted.toString());
+// console.log('--------------복호화------------');
+// console.log('공통키 : ' + keyText);
+// var cipherText = 'B3OpWsFgdV3GTWjiWBSmVQ==';
+// console.log('암호값 : ' + cipherText);
+// console.log('--------------------------------');
+// var decrypted = CryptoJS.SEED.decrypt(cipherText, key, { mode: CryptoJS.mode.ECB, padding: CryptoJS.pad.ZeroPadding });
+// console.log('복호화(utf8) : ' + CryptoJS.enc.Utf8.stringify(decrypted));
+// console.log('복호화(hex) : ' + decrypted.toString());
+
 CryptoJS.test = () => console.log('test complete');
+CryptoJS.string_to_utf8_hex_string = string_to_utf8_hex_string;
 
 module.exports = CryptoJS;
